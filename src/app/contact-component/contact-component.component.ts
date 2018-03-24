@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-contact-component',
@@ -7,6 +7,13 @@ import { Component, OnInit, Input, Output } from '@angular/core';
 })
 export class ContactComponentComponent {
 
+  @Input() contact;
+  @Input() index;
+  @Output() contactToRemove = new EventEmitter<{name: string, phone: string, email: string}>();
 
+  deleteContact(event) {
+    // console.log(this.index);
+    this.contactToRemove.emit(this.contact);
+  }
 
 }

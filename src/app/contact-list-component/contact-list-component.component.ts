@@ -20,4 +20,13 @@ export class ContactListComponentComponent {
     }
   }
 
+  deleteContactHandler(contact, index) {
+    console.log(index); // this was passed from child component - contact
+    const findContact = this.contactList.findIndex((el, i) => {
+      return contact.name === el.name;
+    });
+    console.log(findContact);
+    this.contactList.splice(findContact, 1);
+  }
+
 }

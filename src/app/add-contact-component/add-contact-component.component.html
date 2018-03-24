@@ -10,6 +10,9 @@
       <label>Email:
           <input type="text" [value]="email"/>
       </label>
-      <button class="btn" (click)="onAddContact($event)">Add Contact</button>
+      <button class="btn"
+        (click)="onAddContact($event)"
+        [ngClass]="{'btn-primary': name !== '', 'btn-default': name === ''}"
+        >Add Contact</button>
   </div>
 </div>

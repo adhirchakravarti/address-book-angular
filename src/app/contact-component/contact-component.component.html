@@ -1,3 +1,7 @@
-<p>
-  contact-component works!
-</p>
+<div class="contact">
+    <div>Name: {{contact.name}}</div>
+    <div>Phone: {{contact.phone}}</div>
+    <div>Email: {{contact.email}}</div>
+    <button class="btn btn-danger" (click)="deleteContact($event)">x</button>
+    <button class="btn">e</button>
+</div>

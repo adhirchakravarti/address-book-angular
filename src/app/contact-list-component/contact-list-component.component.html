@@ -1,13 +1,13 @@
 <div class="mainContainer">
-  <div>
-    <ul class="list-group">
-      <li
-        class="list-group-item"
-        *ngFor="let contact of contactList; let i = index">
-        <div>Name: {{contact.name}}</div>
-        <div>Phone: {{contact.phone}}</div>
-        <div>Email: {{contact.email}}</div>
-      </li>
-    </ul>
-  </div>
+
+
+      <app-contact-component
+        class="list-group"
+        *ngFor="let contact of contactList; let i = index"
+        [contact]="contact"
+        [index] = "i"
+        (contactToRemove)="deleteContactHandler($event, i)">
+      </app-contact-component>
+
+
 </div>
