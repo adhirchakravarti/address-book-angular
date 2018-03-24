@@ -1,0 +1,13 @@
+<div class="mainContainer">
+  <div>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let contact of contactList; let i = index">
+        <div>Name: {{contact.name}}</div>
+        <div>Phone: {{contact.phone}}</div>
+        <div>Email: {{contact.email}}</div>
+      </li>
+    </ul>
+  </div>
+</div>

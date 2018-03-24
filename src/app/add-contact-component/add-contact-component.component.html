@@ -1,0 +1,15 @@
+<div class="AddContact">
+  <p> Add New Contact:</p>
+  <div>
+      <label>Name:
+          <input type="text" [value]="name"/>
+      </label>
+      <label>Phone:
+          <input type="text" [value]="phone"/>
+      </label>
+      <label>Email:
+          <input type="text" [value]="email"/>
+      </label>
+      <button class="btn" (click)="onAddContact($event)">Add Contact</button>
+  </div>
+</div>
