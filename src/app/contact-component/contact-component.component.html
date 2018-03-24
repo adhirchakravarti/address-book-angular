@@ -3,5 +3,8 @@
     <div>Phone: {{contact.phone}}</div>
     <div>Email: {{contact.email}}</div>
     <button class="btn btn-danger" (click)="deleteContact($event)">x</button>
-    <button class="btn">e</button>
+    <button class="btn" (click)="showModalHandler($event)">e</button>
+    <app-modal [modalShow]="modalShow"
+      (sendModalClose)="closeModalHandler($event)">
+    </app-modal>
 </div>

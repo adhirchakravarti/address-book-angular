@@ -21,7 +21,7 @@ export class ContactListComponentComponent {
   }
 
   deleteContactHandler(contact, index) {
-    console.log(index); // this was passed from child component - contact
+    console.log(index); // passed from child component (contact) so as to use the index to change the contactList array
     const findContact = this.contactList.findIndex((el, i) => {
       return contact.name === el.name;
     });
