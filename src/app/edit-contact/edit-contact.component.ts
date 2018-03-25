@@ -6,7 +6,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./edit-contact.component.css']
 })
 export class EditContactComponent {
-  @Output() sendModalClose = new EventEmitter<boolean>;
+  @Output() sendModalClose = new EventEmitter<boolean>();
 
   onCancel(event) {
     this.sendModalClose.emit(false);

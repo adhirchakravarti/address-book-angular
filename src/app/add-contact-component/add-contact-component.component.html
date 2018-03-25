@@ -1,18 +1,46 @@
 <div class="AddContact">
   <p> Add New Contact:</p>
-  <div>
-      <label>Name:
-          <input type="text" [value]="name"/>
-      </label>
-      <label>Phone:
-          <input type="text" [value]="phone"/>
-      </label>
-      <label>Email:
-          <input type="text" [value]="email"/>
-      </label>
-      <button class="btn"
-        (click)="onAddContact($event)"
-        [ngClass]="{'btn-primary': name !== '', 'btn-default': name === ''}"
-        >Add Contact</button>
-  </div>
+  <form (ngSubmit)="onSubmit(form); form.resetForm()" #form="ngForm">
+    <div class="row align-items-center">
+        <div class="form-group col-xs-3 col-md-3">
+            <!-- <label class="col-form-label">Name</label> -->
+            <input type="text" minlength="2" class="form-control" name="name"
+            [value]="name" placeholder="Name" ngModel required #nameCtrl="ngModel"/>
+
+        </div>
+        <div class="form-group col-xs-3 col-md-3">
+            <!-- <label class="col-form-label">Phone</label> -->
+            <input type="text" class="form-control" name="phone"
+            [value]="phone" placeholder="Phone" ngModel required #phoneCtrl="ngModel"/>
+
+        </div>
+        <div class="form-group col-xs-3 col-md-3">
+            <!-- <label class="col-form-label">Email</label> -->
+            <input type="email" email class="form-control" name="email"
+            [value]="email" placeholder="Email" ngModel required #emailCtrl="ngModel"/>
+
+        </div>
+        <div class="form-group col-xs-2 col-md-2">
+            <button class="btn"
+              type="submit"
+              [disabled]="form.invalid"
+              [ngClass]="{'btn-primary': name !== '', 'btn-default': name === ''}"
+              >Add Contact</button>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-xs-3 col-md-3">
+              <span class="help-block" *ngIf="nameCtrl.invalid && nameCtrl.touched">Please enter a name</span>
+          </div>
+          <div class="col-xs-3 col-md-3">
+              <span class="help-block" *ngIf="phoneCtrl.invalid && phoneCtrl.touched">Please enter a phone number</span>
+          </div>
+          <div class="col-xs-3 col-md-3">
+              <span class="help-block" *ngIf="emailCtrl.invalid && emailCtrl.touched">Please enter an email address</span>
+          </div>
+          <div class="col-xs-2 col-md-2">
+
+          </div>
+      </div>
+  </form>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ContactDataService } from '../ContactData.service';
 
 @Component({
   selector: 'app-contact-component',
@@ -9,13 +10,20 @@ export class ContactComponentComponent {
 
   @Input() contact;
   @Input() index;
-  @Output() contactToRemove = new EventEmitter<{name: string, phone: string, email: string}>();
+  // @Output() contactToRemove = new EventEmitter<{name: string, phone: string, email: string}>(); Deprecated, using Services.
   modalShow = false;
   backDropShow = false;
 
+  contactServObj: ContactDataService;
+
+  constructor(contactServObj: ContactDataService) {
+    this.contactServObj = contactServObj;
+  }
+
   deleteContact(event) {
     // console.log(this.index);
-    this.contactToRemove.emit(this.contact);
+    // this.contactToRemove.emit(this.contact);
+    this.contactServObj.deleteContactHandler(this.contact, this.index);
   }
 
   showModalHandler(event) {

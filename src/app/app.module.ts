@@ -10,7 +10,7 @@ import { SearchContactComponentComponent } from './search-contact-component/sear
 import { BackdropComponent } from './backdrop/backdrop.component';
 import { ModalComponent } from './modal/modal.component';
 import { EditContactComponent } from './edit-contact/edit-contact.component';
-
+import { ContactDataService } from './ContactData.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ import { EditContactComponent } from './edit-contact/edit-contact.component';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ContactDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
+import { ContactDataService } from '../ContactData.service';
 
 @Component({
   selector: 'app-contact-list-component',
@@ -7,26 +8,32 @@ import { Component, OnInit, Input, Output } from '@angular/core';
 })
 export class ContactListComponentComponent {
 
-  // contactList: Array[];
-  contactList = [
-    {name: 'Adhir', phone: '777164488', email: 'adhir@protonmail.com'},
-    {name: 'John', phone: '787345345', email: 'jdoe@gmail.com'},
-    {name: 'Jack', phone: '977123123', email: 'jsmith@yahoo.co.uk'}
-  ];
+    contactList = [];
 
-  onAddContact(newContact) {
-    if (newContact.name !== '' && newContact.phone !== '' && newContact.email !== '') {
-      this.contactList.push(newContact);
-    }
+  // contactList is now managed in the ContactData Service.
+  // contactList = [
+  //   {name: 'Adhir', phone: '777164488', email: 'adhir@protonmail.com'},
+  //   {name: 'John', phone: '787345345', email: 'jdoe@gmail.com'},
+  //   {name: 'Jack', phone: '977123123', email: 'jsmith@yahoo.co.uk'}
+  // ];
+
+  contactServObj: ContactDataService;
+
+
+  constructor(contactServObj: ContactDataService) {
+    this.contactServObj = contactServObj;
+    this.contactList = this.contactServObj.getContacts();
   }
 
-  deleteContactHandler(contact, index) {
-    console.log(index); // passed from child component (contact) so as to use the index to change the contactList array
-    const findContact = this.contactList.findIndex((el, i) => {
-      return contact.name === el.name;
-    });
-    console.log(findContact);
-    this.contactList.splice(findContact, 1);
-  }
+
+  // Deprecated in favor of Services.
+  // deleteContactHandler(contact, index) {
+  //   console.log(index); // passed from child component (contact) so as to use the index to change the contactList array
+  //   const findContact = this.contactList.findIndex((el, i) => {
+  //     return contact.name === el.name;
+  //   });
+  //   console.log(findContact);
+  //   this.contactList.splice(findContact, 1);
+  // }
 
 }

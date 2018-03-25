@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
+import { ContactDataService } from '../ContactData.service';
 
 @Component({
   selector: 'app-add-contact-component',
@@ -12,6 +13,12 @@ export class AddContactComponentComponent {
   email = '';
   newContact = {name: '', phone: '', email: ''};
 
+  contactServObj: ContactDataService;
+
+  constructor(contactServObj: ContactDataService) {
+    this.contactServObj = contactServObj;
+  }
+
   onAddContact(event) {
     if (this.name !== '' && this.phone !== '' && this.email !== '') {
       this.newContact.name = this.name;
@@ -19,6 +26,19 @@ export class AddContactComponentComponent {
       this.newContact.email = this.email;
     }
     console.log(this.newContact);
+  }
+
+  onSubmit(submittedForm){
+    if (submittedForm.invalid) {
+      return;
+    }
+    console.log(submittedForm);
+    if (submittedForm.value.name !== '' && submittedForm.value.phone !== '' && submittedForm.value.email !== '') {
+      this.contactServObj.addContactHandler(submittedForm.value.name, submittedForm.value.phone, submittedForm.value.email);
+      this.name = '';
+      this.phone = '';
+      this.email = '';
+    }
   }
 
 }
