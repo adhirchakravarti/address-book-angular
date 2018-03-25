@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-edit-contact',
@@ -6,5 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-contact.component.css']
 })
 export class EditContactComponent {
+  @Output() sendModalClose = new EventEmitter<boolean>;
 
+  onCancel(event) {
+    this.sendModalClose.emit(false);
+  }
 }
