@@ -11,6 +11,8 @@ import { BackdropComponent } from './backdrop/backdrop.component';
 import { ModalComponent } from './modal/modal.component';
 import { EditContactComponent } from './edit-contact/edit-contact.component';
 import { ContactDataService } from './ContactData.service';
+import { CockpitComponentComponent } from './cockpit-component/cockpit-component.component';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { ContactDataService } from './ContactData.service';
     SearchContactComponentComponent,
     BackdropComponent,
     ModalComponent,
-    EditContactComponent
+    EditContactComponent,
+    CockpitComponentComponent
   ],
   imports: [
     BrowserModule,

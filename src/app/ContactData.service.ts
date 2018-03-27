@@ -5,8 +5,38 @@ export class ContactDataService {
     {name: 'Jack', phone: '977123123', email: 'jsmith@yahoo.co.uk'}
   ];
 
-  getContacts() {
-    return this.contactList;
+  getContacts(queryObj = '') {
+    if (queryObj === '') {
+      return this.contactList;
+    } else {
+      const foundContacts = [];
+    const results = [];
+    this.contactList.forEach((el, index) => {
+      const myRe = new RegExp(queryObj, 'gi');
+      if ((el.name.search(myRe) !== -1) || (el.phone.search(myRe) !== -1) || (el.email.search(myRe) !== -1)) {
+        results.push(el.name.match(myRe));
+        foundContacts.push(el);
+      }
+    });
+    console.log(results);
+    console.log('FoundContacts: ', foundContacts);
+    return foundContacts;
+    }
+  }
+
+  displayedContacts(queryObj) {
+    console.log('Query object: ', queryObj);
+    const foundContacts = [];
+    const results = [];
+    this.contactList.forEach((el, index) => {
+      const myRe = new RegExp(queryObj, 'gi');
+      if ((el.name.search(myRe) !== -1) || (el.phone.search(myRe) !== -1) || (el.email.search(myRe) !== -1)) {
+        results.push(el.name.match(myRe));
+        foundContacts.push(el);
+      }
+    });
+    console.log(results);
+    console.log('FoundContacts: ', foundContacts);
   }
 
   addContactHandler(name, phone, email) {

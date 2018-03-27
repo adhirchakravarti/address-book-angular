@@ -28,7 +28,7 @@ export class AddContactComponentComponent {
     console.log(this.newContact);
   }
 
-  onSubmit(submittedForm){
+  onSubmit(submittedForm) {
     if (submittedForm.invalid) {
       return;
     }

@@ -1,8 +1,13 @@
 <div class="searchContainer">
-    <label>Search:
-        <input type="text"
-        placeholder="Search Contact.."/>
-    </label>
-    <button class="btn">Submit</button>
-    <button class="btn">Reset</button>
+  <div class="row">
+    <form (ngSubmit)="onSubmit(searchForm)" class="form-inline" #searchForm="ngForm">
+      <div class="form-group">
+            <!-- <label>Search:</label> -->
+            <input class="form-control" type="text" minlength="2"
+            placeholder="Search Contact.." name="search" ngModel #searchCtrl="ngModel"/>
+            <button class="btn" type="submit" [disabled]="searchForm.invalid">Submit</button>
+            <button class="btn">Reset</button>
+      </div>
+  </form>
+  </div>
 </div>

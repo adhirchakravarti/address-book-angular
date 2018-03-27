@@ -12,6 +12,7 @@ export class ModalComponent {
   @Output() sendModalClose = new EventEmitter<boolean>();
 
   closeModalHandler(event) {
+    console.log(event);
     this.sendModalClose.emit(false);
   }
 

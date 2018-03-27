@@ -1,5 +1,13 @@
 .searchContainer {
   text-align: center;
   margin:auto;
-  width: 50%;
+  display: inline;
+  padding:20px;
+
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

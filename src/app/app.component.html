@@ -1,15 +1,13 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>
-    Basic Angular Address-Book
-  </h1>
+  <app-cockpit-component></app-cockpit-component>
 </div>
 <div class="container">
   <div class="row">
       <div class="col">
-          <app-search-contact-component>
+          <!-- <app-search-contact-component (searchTerm)="passOnSearchTerm($event)">
 
-          </app-search-contact-component>
+          </app-search-contact-component> -->
       </div>
   </div>
 </div>
@@ -25,7 +23,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <app-contact-list-component>
+            <app-contact-list-component [searchQuery]="searchQuery">
 
             </app-contact-list-component>
         </div>
