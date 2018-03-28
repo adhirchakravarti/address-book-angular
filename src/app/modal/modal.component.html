@@ -4,5 +4,5 @@
         transform: modalShow? 'translateY(0)' : 'translateY(-100vh)',
         opacity: modalShow? '1' : '0'
     }">
-    <app-edit-contact (sendModalClose)="closeModalHandler($event)"></app-edit-contact>
+    <app-edit-contact [contact]="importedContact" (sendModalClose)="closeModalHandler($event)"></app-edit-contact>
 </div>

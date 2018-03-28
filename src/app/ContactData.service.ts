@@ -1,9 +1,5 @@
 export class ContactDataService {
-  private contactList = [
-    {name: 'Adhir', phone: '777164488', email: 'adhir@protonmail.com'},
-    {name: 'John', phone: '787345345', email: 'jdoe@gmail.com'},
-    {name: 'Jack', phone: '977123123', email: 'jsmith@yahoo.co.uk'}
-  ];
+  private contactList = [];
 
   getContacts(queryObj = '') {
     if (queryObj === '') {
@@ -24,20 +20,21 @@ export class ContactDataService {
     }
   }
 
-  displayedContacts(queryObj) {
-    console.log('Query object: ', queryObj);
-    const foundContacts = [];
-    const results = [];
-    this.contactList.forEach((el, index) => {
-      const myRe = new RegExp(queryObj, 'gi');
-      if ((el.name.search(myRe) !== -1) || (el.phone.search(myRe) !== -1) || (el.email.search(myRe) !== -1)) {
-        results.push(el.name.match(myRe));
-        foundContacts.push(el);
-      }
-    });
-    console.log(results);
-    console.log('FoundContacts: ', foundContacts);
-  }
+  // Not being used as of yet
+  // displayedContacts(queryObj) {
+  //   console.log('Query object: ', queryObj);
+  //   const foundContacts = [];
+  //   const results = [];
+  //   this.contactList.forEach((el, index) => {
+  //     const myRe = new RegExp(queryObj, 'gi');
+  //     if ((el.name.search(myRe) !== -1) || (el.phone.search(myRe) !== -1) || (el.email.search(myRe) !== -1)) {
+  //       results.push(el.name.match(myRe));
+  //       foundContacts.push(el);
+  //     }
+  //   });
+  //   console.log(results);
+  //   console.log('FoundContacts: ', foundContacts);
+  // }
 
   addContactHandler(name, phone, email) {
     // if (newContact.name !== '' && newContact.phone !== '' && newContact.email !== '') {
@@ -62,5 +59,17 @@ export class ContactDataService {
     });
     console.log(findContact);
     this.contactList.splice(findContact, 1);
+  }
+
+  editContactHandler(index, contact) {
+    this.contactList.splice(index, 1, contact);
+  }
+
+  findContactIndex(contact) {
+    const findContact = this.contactList.findIndex((el, i) => {
+      return contact.name === el.name;
+    });
+    console.log(findContact);
+    return findContact;
   }
 }

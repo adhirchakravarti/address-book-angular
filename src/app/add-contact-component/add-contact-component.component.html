@@ -1,5 +1,5 @@
 <div class="AddContact">
-  <p> Add New Contact:</p>
+  <p> Add New Contact</p>
   <form (ngSubmit)="onSubmit(form); form.resetForm()" #form="ngForm">
     <div class="row align-items-center">
         <div class="form-group col-xs-3 col-md-3">
@@ -16,12 +16,12 @@
         </div>
         <div class="form-group col-xs-3 col-md-3">
             <!-- <label class="col-form-label">Email</label> -->
-            <input type="email" email class="form-control" name="email"
+            <input type="email" class="form-control" name="email"
             [value]="email" placeholder="Email" ngModel required #emailCtrl="ngModel"/>
 
         </div>
         <div class="form-group col-xs-2 col-md-2">
-            <button class="btn"
+            <button class="btn btn-default"
               type="submit"
               [disabled]="form.invalid"
               [ngClass]="{'btn-primary': name !== '', 'btn-default': name === ''}"

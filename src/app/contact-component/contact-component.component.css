@@ -3,10 +3,14 @@
   display: grid;
   grid-template-columns: 31% 30% 31% 4% 4%;
   justify-items: stretch;
-  margin:10px;
+  margin:10px auto;
   /* margin-right: 10px; */
   padding: 10px;
   box-shadow:0 2px 3px rgb(26, 25, 25);
+}
+
+.contactChild {
+  align-self: center;
 }
 
 button {

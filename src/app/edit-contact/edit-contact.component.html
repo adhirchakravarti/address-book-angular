@@ -1,22 +1,19 @@
 <div class="outer">
-    <p><strong>Edit Contact: ContactName</strong></p>
-    <div class="inner">
-        <label >Name:
-            <input type="text" name="name"/>
-        </label>
-    </div>
-    <div class="inner">
-        <label >Phone:
-            <input type="text" name="phone" />
-        </label>
-    </div>
-    <div class="inner">
-        <label >Email:
-            <input type="text" name="email" />
-        </label>
-    </div>
-    <div class="inner">
-        <button class="btn btn-primary">Save</button>
-        <button class="btn btn-default"(click)="onCancel($event)">Cancel</button>
-    </div>
+  <form (ngSubmit)="onSubmit(editForm); editForm.resetForm()" #editForm="ngForm">
+      <p><strong>Edit Contact: {{contact.name}}</strong></p>
+      <div class="form-group">
+          <input class="form-control" type="text" name="name" placeholder="Name" ngModel #nameCtrl="ngModel"/>
+      </div>
+      <div class="form-group">
+          <input class="form-control" type="text" name="phone" placeholder="Phone" ngModel #phoneCtrl="ngModel"/>
+      </div>
+      <div class="form-group">
+          <input class="form-control" type="text" name="email" placeholder="Email" ngModel #emailCtrl="ngModel" />
+      </div>
+      <div class="form-group">
+          <button class="btn btn-primary" type="submit">Save</button>
+          <button class="btn btn-default"(click)="onCancel($event)">Cancel</button>
+      </div>
+  </form>
+
 </div>

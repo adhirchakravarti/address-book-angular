@@ -1,10 +1,16 @@
 <div class="contact">
-    <div>Name: {{contact.name}}</div>
-    <div>Phone: {{contact.phone}}</div>
-    <div>Email: {{contact.email}}</div>
-    <button class="btn btn-danger" (click)="deleteContact($event)">x</button>
-    <button class="btn" (click)="showModalHandler($event)">e</button>
-    <app-modal [modalShow]="modalShow"
+    <div class="contactChild">Name: {{contact.name}}</div>
+    <div class="contactChild">Phone: {{contact.phone}}</div>
+    <div class="contactChild">Email: {{contact.email}}</div>
+    <div class="contactChild">
+      <button class="btn btn-danger" (click)="deleteContact($event)">x</button>
+    </div>
+    <div class="contactChild">
+      <button class="btn" (click)="showModalHandler($event)">e</button>
+    </div>
+</div>
+<div>
+    <app-modal [modalShow]="modalShow" [importedContact]="contact"
       (sendModalClose)="closeModalHandler($event)">
     </app-modal>
 </div>
