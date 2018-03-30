@@ -1,9 +1,8 @@
 <div class="mainContainer">
 
-
       <app-contact-component
 
-        *ngFor="let contact of contactList; let i = index"
+        *ngFor="let contact of contactList | filterContact: queryString; let i = index"
         [contact]="contact"
         [index] = "i"
         >

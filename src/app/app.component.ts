@@ -13,7 +13,7 @@ export class AppComponent {
 
   passOnSearchTerm(event) {
     console.log(event);
-    // this.searchTerm.emit(event);
     this.searchQuery = event;
+    this.searchTerm.emit(event);
   }
 }

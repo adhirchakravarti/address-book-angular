@@ -1,5 +1,14 @@
 export class ContactDataService {
   private contactList = [];
+  public searchQuery: string;
+
+  getSearchQuery() {
+    if (this.searchQuery === '') {
+      return;
+    } else {
+      return this.searchQuery;
+    }
+  }
 
   getContacts(queryObj = '') {
     if (queryObj === '') {

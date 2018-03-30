@@ -8,6 +8,7 @@ import { ContactDataService } from '../ContactData.service';
 })
 export class SearchContactComponentComponent {
 
+  query: string;
   contactServObj: ContactDataService;
 
   @Output() searchTerm = new EventEmitter<string>();
@@ -24,7 +25,15 @@ export class SearchContactComponentComponent {
     if (submittedSearch.value.search !== '') {
       // this.contactServObj.getContacts(submittedSearch.value.search); // the service will be used when I learn about lifecycle hooks
       this.searchTerm.emit(submittedSearch.value.search);
+      // console.log(submittedSearch.value.search);
+      console.log(this.query);
+      this.contactServObj.searchQuery = submittedSearch.value.search;
     }
+  }
+
+  onReset(event) {
+    console.log(this.query);
+    this.contactServObj.searchQuery = '';
   }
 
 }

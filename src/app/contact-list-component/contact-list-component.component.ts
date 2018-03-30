@@ -1,4 +1,7 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output,
+   OnChanges, DoCheck, AfterContentChecked,
+   AfterContentInit, AfterViewInit,
+   AfterViewChecked } from '@angular/core';
 import { ContactDataService } from '../ContactData.service';
 // import { FilterPipe } from '../../../src/pipes';
 
@@ -7,10 +10,13 @@ import { ContactDataService } from '../ContactData.service';
   templateUrl: './contact-list-component.component.html',
   styleUrls: ['./contact-list-component.component.css']
 })
-export class ContactListComponentComponent implements OnInit {
+export class ContactListComponentComponent implements OnInit, OnChanges,
+DoCheck, AfterContentInit, AfterContentChecked,
+AfterViewInit, AfterViewChecked {
 
     contactList = [];
-    @Input() searchQuery;
+    @Input() searchQuery; // from app component
+    queryString: string; // from contactDataService
     // queryString = this.searchQuery;
     // searchableList = [];
   // contactList is now managed in the ContactData Service.
@@ -31,6 +37,38 @@ export class ContactListComponentComponent implements OnInit {
 
   ngOnInit() {
     this.contactList = this.contactServObj.getContacts();
+    // console.log('ngOnInit called!');
+  }
+
+  passedOnSearchTerm(event) {
+    console.log(event);
+  }
+
+  ngOnChanges() {
+    // this.queryString = this.contactServObj.searchQuery;
+    // console.log('ngOnChanges called!');
+  }
+
+  ngDoCheck() {
+    // console.log('ngDoCheck called!');
+    // console.log(this.searchQuery);
+    this.queryString = this.contactServObj.getSearchQuery();
+    console.log(this.queryString);
+  }
+
+  ngAfterContentInit() {
+    // console.log('ngAfterContentInit called!');
+  }
+
+  ngAfterContentChecked() {
+    // console.log('ngAfterContentChecked called!');
+  }
+
+  ngAfterViewInit() {
+    // console.log('ngAfterViewInit called!');
+  }
+  ngAfterViewChecked() {
+    // console.log('ngAfterViewChecked called!');
   }
   // Deprecated in favor of Services.
   // deleteContactHandler(contact, index) {

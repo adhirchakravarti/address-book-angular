@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ModalShowService } from '../modal-show.service';
 
 @Component({
   selector: 'app-modal',

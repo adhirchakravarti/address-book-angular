@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ContactDataService } from '../ContactData.service';
+import { ModalShowService } from '../modal-show.service';
 
 @Component({
   selector: 'app-contact-component',
@@ -12,12 +13,13 @@ export class ContactComponentComponent {
   @Input() index;
   // @Output() contactToRemove = new EventEmitter<{name: string, phone: string, email: string}>(); Deprecated, using Services.
   modalShow = false;
-  backDropShow = false;
+  modalToShow: ModalShowService;
 
   contactServObj: ContactDataService;
 
   constructor(contactServObj: ContactDataService) {
     this.contactServObj = contactServObj;
+
   }
 
   deleteContact(event) {
@@ -29,6 +31,7 @@ export class ContactComponentComponent {
   showModalHandler(event) {
     // this.backDropShow = true;
     this.modalShow = true;
+    // this.modalToShow.showModalHandler();
   }
 
   closeModalHandler(negativeFeedback) {

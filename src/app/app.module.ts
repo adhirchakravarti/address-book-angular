@@ -12,6 +12,8 @@ import { ModalComponent } from './modal/modal.component';
 import { EditContactComponent } from './edit-contact/edit-contact.component';
 import { ContactDataService } from './ContactData.service';
 import { CockpitComponentComponent } from './cockpit-component/cockpit-component.component';
+import { FilterContactPipe } from './filter-contact.pipe';
+
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { CockpitComponentComponent } from './cockpit-component/cockpit-component
     BackdropComponent,
     ModalComponent,
     EditContactComponent,
-    CockpitComponentComponent
+    CockpitComponentComponent,
+    FilterContactPipe
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { ContactDataService } from '../ContactData.service';
+import { ModalShowService } from '../modal-show.service';
 
 @Component({
   selector: 'app-edit-contact',
@@ -10,7 +11,9 @@ export class EditContactComponent implements OnInit {
   @Output() sendModalClose = new EventEmitter<boolean>();
   @Input() contact;
   index: number;
-  editedContact = {name: '', phone: '', email: ''};
+  name = '';
+  phone = '';
+  email = '';
 
   contactServObj: ContactDataService;
 
@@ -28,6 +31,9 @@ export class EditContactComponent implements OnInit {
   onSave(event) {
     const index = this.contactServObj.findContactIndex(this.contact);
     // this.contactServObj.editContactHandler(index);
+    const contactToSave = {name: this.name, phone: this.phone, email: this.email};
+    console.log(contactToSave);
+    this.contactServObj.editContactHandler(this.index, contactToSave);
   }
 
   onSubmit(submittedForm) {
@@ -35,11 +41,9 @@ export class EditContactComponent implements OnInit {
       return;
     }
     console.log(submittedForm.value);
-    this.editedContact.name = submittedForm.value.name;
-    this.editedContact.phone = submittedForm.value.phone;
-    this.editedContact.email = submittedForm.value.email;
-    console.log(this.editedContact);
+    const contactToSave = {name: submittedForm.value.name, phone: submittedForm.value.phone, email: submittedForm.value.email};
+    console.log(contactToSave);
     this.index = this.contactServObj.findContactIndex(this.contact);
-    this.contactServObj.editContactHandler(this.index, this.editedContact);
+    this.contactServObj.editContactHandler(this.index, contactToSave);
   }
 }
