@@ -11,15 +11,14 @@ export class ContactComponentComponent {
 
   @Input() contact;
   @Input() index;
-  // @Output() contactToRemove = new EventEmitter<{name: string, phone: string, email: string}>(); Deprecated, using Services.
+  // @Output() contactToRemove = new EventEmitter<{name: string, phone: string, email: string}>(); Deprecated, using Services
+  modalServObj: ModalShowService;
   modalShow = false;
-  modalToShow: ModalShowService;
-
   contactServObj: ContactDataService;
+  // modalShow = this.modalServObj.getModalStatus();
 
   constructor(contactServObj: ContactDataService) {
     this.contactServObj = contactServObj;
-
   }
 
   deleteContact(event) {

@@ -53,7 +53,7 @@ AfterViewInit, AfterViewChecked {
     // console.log('ngDoCheck called!');
     // console.log(this.searchQuery);
     this.queryString = this.contactServObj.getSearchQuery();
-    console.log(this.queryString);
+    // console.log(this.queryString);
   }
 
   ngAfterContentInit() {

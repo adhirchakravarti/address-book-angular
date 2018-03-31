@@ -36,4 +36,9 @@ export class SearchContactComponentComponent {
     this.contactServObj.searchQuery = '';
   }
 
+  onKey(event) {
+    // console.log(event.target.value);
+    this.contactServObj.searchQuery = event.target.value;
+  }
+
 }

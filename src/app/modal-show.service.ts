@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+// import { Injectable } from '@angular/core';
 
 export class ModalShowService {
   private modalShow = false;
@@ -16,6 +16,10 @@ export class ModalShowService {
   }
 
   getModalStatus() {
-    return this.modalShow;
+    if (this.modalShow) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
