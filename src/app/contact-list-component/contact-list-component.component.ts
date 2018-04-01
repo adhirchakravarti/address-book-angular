@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, Output,
    OnChanges, DoCheck, AfterContentChecked,
    AfterContentInit, AfterViewInit,
-   AfterViewChecked } from '@angular/core';
+   AfterViewChecked,
+   SimpleChanges} from '@angular/core';
 import { ContactDataService } from '../ContactData.service';
 // import { FilterPipe } from '../../../src/pipes';
 
@@ -44,7 +45,7 @@ AfterViewInit, AfterViewChecked {
     console.log(event);
   }
 
-  ngOnChanges() {
+  ngOnChanges(changes: SimpleChanges) {
     // this.queryString = this.contactServObj.searchQuery;
     // console.log('ngOnChanges called!');
   }
