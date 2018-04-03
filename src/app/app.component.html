@@ -10,8 +10,8 @@
           </app-search-contact-component>
       </div>
   </div>
-</div>
-<div class="container">
+
+
     <div class="row">
         <div class="col">
             <app-add-contact-component>
@@ -19,8 +19,12 @@
             </app-add-contact-component>
         </div>
     </div>
-</div>
-<div class="container">
+    <div class="row">
+      <div class="col-12">
+        <app-sort></app-sort>
+      </div>
+    </div>
+
     <div class="row">
         <div class="col">
             <app-contact-list-component (searchQuery)="searchQuery">

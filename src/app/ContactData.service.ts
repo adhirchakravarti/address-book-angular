@@ -29,6 +29,39 @@ export class ContactDataService {
     }
   }
 
+  sortContactHandler = (value) => {
+    // contacts.sort(compareValues('phone', 'asc'))
+    console.log(value);
+    const field = value === 'default' ? null : value;
+    if (this.contactList.length > 1 && field !== null) {
+      this.contactList.sort(this.compareValues(field, 'asc'));
+      console.log(this.contactList);
+    }
+  }
+
+  compareValues = (key, order= 'asc') => {
+    return function(a, b) {
+        if (!a.hasOwnProperty(key) ||
+          !b.hasOwnProperty(key)) {
+          return 0;
+        }
+        const varA = (typeof a[key] === 'string') ?
+          a[key].toUpperCase() : a[key];
+        const varB = (typeof b[key] === 'string') ?
+          b[key].toUpperCase() : b[key];
+        let comparison = 0;
+        if (varA > varB) {
+          comparison = 1;
+        } else if (varA < varB) {
+          comparison = -1;
+        }
+        return (
+          (order === 'desc') ?
+          (comparison * -1) : comparison
+        );
+    };
+  }
+
 
   addContactHandler(name, phone, email) {
     // if (newContact.name !== '' && newContact.phone !== '' && newContact.email !== '') {
@@ -47,15 +80,11 @@ export class ContactDataService {
   }
 
   deleteContactHandler(contact, index) {
-    console.log(index); // alternate - passed from child component (contact) so as to use the index to change the contactList array
-    const findContact = this.contactList.findIndex((el, i) => {
-      return contact.name === el.name;
-    });
-    console.log(findContact);
-    this.contactList.splice(findContact, 1);
+    console.log(index); // passed from child component (contact) so as to use the index to change the contactList array
+    this.contactList.splice(index, 1);
   }
 
-  editContactHandler(index, contact) {
+  editContactHandler(contact, index) {
     this.contactList.splice(index, 1, contact);
   }
 

@@ -1,5 +1,5 @@
 <div class="outer">
-  <form #editForm="ngForm">
+  <form (ngSubmit)="onSubmit(editForm); editForm.resetForm()" #editForm="ngForm">
       <p><strong>Edit Contact: {{contact.name}}</strong></p>
       <div class="form-group">
           <input class="form-control" type="text" name="name" placeholder="Name" [(ngModel)]="name" #nameCtrl="ngModel" required/>
@@ -11,7 +11,7 @@
           <input class="form-control" type="text" name="email" placeholder="Email" [(ngModel)]="email" #emailCtrl="ngModel" required/>
       </div>
       <div class="form-group">
-          <button class="btn btn-primary" type="submit" [disabled]="editForm.invalid" (click)="onSave($event)">Save</button>
+          <button class="btn btn-primary" type="submit" [disabled]="editForm.invalid">Save</button>
           <button class="btn btn-default" (click)="onCancel($event)">Cancel</button>
       </div>
   </form>

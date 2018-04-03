@@ -11,8 +11,10 @@ import { BackdropComponent } from './backdrop/backdrop.component';
 import { ModalComponent } from './modal/modal.component';
 import { EditContactComponent } from './edit-contact/edit-contact.component';
 import { ContactDataService } from './ContactData.service';
+import { ModalShowService } from './modal-show.service';
 import { CockpitComponentComponent } from './cockpit-component/cockpit-component.component';
 import { FilterContactPipe } from './filter-contact.pipe';
+import { SortComponent } from './sort/sort.component';
 
 
 
@@ -27,13 +29,14 @@ import { FilterContactPipe } from './filter-contact.pipe';
     ModalComponent,
     EditContactComponent,
     CockpitComponentComponent,
-    FilterContactPipe
+    FilterContactPipe,
+    SortComponent
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
-  providers: [ContactDataService],
+  providers: [ContactDataService, ModalShowService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

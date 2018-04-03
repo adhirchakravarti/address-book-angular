@@ -28,22 +28,22 @@ export class EditContactComponent implements OnInit {
     this.sendModalClose.emit(false);
   }
 
-  onSave(event) {
-    const index = this.contactServObj.findContactIndex(this.contact);
-    // this.contactServObj.editContactHandler(index);
-    const contactToSave = {name: this.name, phone: this.phone, email: this.email};
-    console.log(contactToSave);
-    this.contactServObj.editContactHandler(this.index, contactToSave);
-  }
+  // onSave(event) {
+  //   this.index = this.contactServObj.findContactIndex(this.contact);
+  //   // this.contactServObj.editContactHandler(index);
+  //   const contactToSave = {name: this.name, phone: this.phone, email: this.email};
+  //   console.log(contactToSave);
+  //   this.contactServObj.editContactHandler(contactToSave, this.index);
+  // }
 
   onSubmit(submittedForm) {
     if (submittedForm.invalid) {
       return;
     }
-    console.log(submittedForm.value);
+    // console.log(submittedForm.value);
     const contactToSave = {name: submittedForm.value.name, phone: submittedForm.value.phone, email: submittedForm.value.email};
     console.log(contactToSave);
     this.index = this.contactServObj.findContactIndex(this.contact);
-    this.contactServObj.editContactHandler(this.index, contactToSave);
+    this.contactServObj.editContactHandler(contactToSave, this.index);
   }
 }

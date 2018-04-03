@@ -36,6 +36,14 @@ AfterViewInit, AfterViewChecked {
     // this.searchableList = ['name', 'phone', 'email'];
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    // this.queryString = this.contactServObj.searchQuery;
+    console.log('ngOnChanges called!');
+    for (const key of Object.keys(changes)) {
+        console.log(`${key} changed.Current: ${changes[key].currentValue}.Previous: ${changes[key].previousValue}`);
+      }
+  }
+
   ngOnInit() {
     this.contactList = this.contactServObj.getContacts();
     // console.log('ngOnInit called!');
@@ -43,11 +51,6 @@ AfterViewInit, AfterViewChecked {
 
   passedOnSearchTerm(event) {
     console.log(event);
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    // this.queryString = this.contactServObj.searchQuery;
-    // console.log('ngOnChanges called!');
   }
 
   ngDoCheck() {
