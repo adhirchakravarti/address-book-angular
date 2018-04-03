@@ -62,20 +62,42 @@ export class ContactDataService {
     };
   }
 
+  // findExistingContact(el, i){
+  //   let field = '';
+  //   if (name === el.name) {
+  //     field = 'name';
+  //   } else if (phone === el.phone) {
+  //     field = 'phone';
+  //   } else if (email === el.email) {
+  //     field = 'email';
+  //   }
+  // }
 
   addContactHandler(name, phone, email) {
     // if (newContact.name !== '' && newContact.phone !== '' && newContact.email !== '') {
     //   this.contactList.push(newContact);
     // }
+    let field = '';
     const findExistingContact = this.contactList.findIndex((el, i) => {
-      return (name === el.name) || (phone === el.phone) || (email === el.email);
+      // return (name === el.name) || (phone === el.phone) || (email === el.email);
+      if (name === el.name) {
+        field = 'name';
+        return true;
+      } else if (phone === el.phone) {
+        field = 'phone';
+        return true;
+      } else if (email === el.email) {
+        field = 'email';
+        return true;
+      }
+      return false;
     });
     console.log(findExistingContact);
     if (findExistingContact === -1) {
       const newContact = {name: name, phone: phone, email: email};
       this.contactList.push(newContact);
     } else {
-      alert('Contact already exists!');
+      alert(`Contact with field ${field} already exists!`);
     }
   }
 
