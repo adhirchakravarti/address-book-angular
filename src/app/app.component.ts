@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +8,4 @@ import { Component, Output, EventEmitter } from '@angular/core';
 export class AppComponent {
   title = 'app';
 
-  @Output() searchTerm = new EventEmitter<string>();
-  searchQuery = '';
-
-  passOnSearchTerm(event) {
-    console.log(event);
-    this.searchQuery = event;
-    this.searchTerm.emit(event);
-  }
 }

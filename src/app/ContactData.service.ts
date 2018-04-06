@@ -1,6 +1,9 @@
+import { EventEmitter } from '@angular/core';
+
 export class ContactDataService {
   private contactList = [];
   public searchQuery: string;
+  queryString = new EventEmitter<string>();
 
   getSearchQuery() {
     if (this.searchQuery === '') {

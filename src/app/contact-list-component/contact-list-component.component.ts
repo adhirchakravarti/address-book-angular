@@ -16,10 +16,9 @@ DoCheck, AfterContentInit, AfterContentChecked,
 AfterViewInit, AfterViewChecked {
 
     contactList = [];
-    @Input() searchQuery; // from app component
-    queryString: string; // from contactDataService
-    // queryString = this.searchQuery;
-    // searchableList = [];
+    searchQuery: string; // alternate subscribed data from contactDataService
+    // queryString: string; // from contactDataService
+
   // contactList is now managed in the ContactData Service.
   // contactList = [
   //   {name: 'Adhir', phone: '777164488', email: 'adhir@protonmail.com'},
@@ -47,6 +46,9 @@ AfterViewInit, AfterViewChecked {
   ngOnInit() {
     this.contactList = this.contactServObj.getContacts();
     // console.log('ngOnInit called!');
+    this.contactServObj.queryString.subscribe((query: string) => {
+      this.searchQuery = query;
+    });
   }
 
   passedOnSearchTerm(event) {
@@ -55,9 +57,9 @@ AfterViewInit, AfterViewChecked {
 
   ngDoCheck() {
     // console.log('ngDoCheck called!');
-    // console.log(this.searchQuery);
-    this.queryString = this.contactServObj.getSearchQuery();
+    // this.queryString = this.contactServObj.getSearchQuery();
     // console.log(this.queryString);
+    // console.log(this.searchQuery);
   }
 
   ngAfterContentInit() {
