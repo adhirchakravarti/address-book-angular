@@ -1,4 +1,5 @@
-<div class="contact">
+<!-- <div class="contact"
+  (click)="onSelected()">
     <div class="contactChild">Name: {{contact.name}}</div>
     <div class="contactChild">Phone: {{contact.phone}}</div>
     <div class="contactChild">Email: {{contact.email}}</div>
@@ -9,6 +10,36 @@
       <button class="btn" (click)="showModalHandler($event)">e</button>
     </div>
 </div>
+<div>
+    <app-modal [modalShow]="modalShow" [importedContact]="contact"
+      (sendModalClose)="closeModalHandler($event)">
+    </app-modal>
+</div> -->
+<div class="row">
+  <div class="col-12">
+    <div class="col-8 float-left">
+      <div class="list-group-item clearfix">
+        <div class="float-left">
+            <h4 class="list-group-item-heading">{{ contact.name }}</h4>
+            <h6 class="list-group-item-text">Phone: {{ contact.phone }}</h6>
+            <h6 class="list-group-item-text">Email: {{ contact.email }}</h6>
+        </div>
+        <div class="float-right">
+            <button class="btn btn-light" (click)="deleteContact($event)"><i class="fas fa-trash-alt"></i></button>
+            <button class="btn btn-light" (click)="showModalHandler($event)"><i class="fas fa-edit"></i></button>
+            <button class="btn btn-light" (click)="onSelected()" *ngIf="wasClicked===false"><i class="fas fa-chevron-right"></i></button>
+            <button class="btn btn-light" (click)="onSelected()" *ngIf="wasClicked===true"><i class="fas fa-chevron-left"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 float-right">
+        <app-contact-detail
+          *ngIf="selectedContact"
+          [contact]="selectedContact"></app-contact-detail>
+    </div>
+  </div>
+</div>
+
 <div>
     <app-modal [modalShow]="modalShow" [importedContact]="contact"
       (sendModalClose)="closeModalHandler($event)">

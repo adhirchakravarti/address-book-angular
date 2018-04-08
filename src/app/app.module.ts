@@ -15,6 +15,7 @@ import { ModalShowService } from './modal-show.service';
 import { CockpitComponentComponent } from './cockpit-component/cockpit-component.component';
 import { FilterContactPipe } from './filter-contact.pipe';
 import { SortComponent } from './sort/sort.component';
+import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 
 
 
@@ -30,7 +31,8 @@ import { SortComponent } from './sort/sort.component';
     EditContactComponent,
     CockpitComponentComponent,
     FilterContactPipe,
-    SortComponent
+    SortComponent,
+    ContactDetailComponent
   ],
   imports: [
     BrowserModule,

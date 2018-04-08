@@ -1,12 +1,16 @@
-<div class="mainContainer">
+<div class="row">
+  <div class="col-12">
+    <div class="mainContainer">
 
-      <app-contact-component
+          <app-contact-component
 
-        *ngFor="let contact of contactList | filterContact: searchQuery; let i = index"
-        [contact]="contact"
-        [index] = "i"
-        >
-      </app-contact-component>
+            *ngFor="let contact of contactList | filterContact: searchQuery; let i = index"
+            [contact]="contact"
+            [index] = "i"
+            >
+          </app-contact-component>
 
 
+    </div>
+  </div>
 </div>

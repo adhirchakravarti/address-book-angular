@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ContactDataService } from '../ContactData.service';
 import { ModalShowService } from '../modal-show.service';
+import { Contact } from '../contact.model';
 
 @Component({
   selector: 'app-contact-component',
@@ -11,6 +12,8 @@ export class ContactComponentComponent {
 
   @Input() contact;
   @Input() index;
+  wasClicked = false;
+  selectedContact;
   // @Output() contactToRemove = new EventEmitter<{name: string, phone: string, email: string}>(); Deprecated, using Services
   modalServObj: ModalShowService;
   modalShow = false;
@@ -36,6 +39,19 @@ export class ContactComponentComponent {
   closeModalHandler(negativeFeedback) {
     // this.backDropShow = false;
     this.modalShow = negativeFeedback;
+  }
+
+  onSelected() {
+    console.log(`contact ${this.contact.name} clicked!`);
+    this.wasClicked = this.wasClicked ? false : true;
+    console.log(this.wasClicked);
+    if (this.wasClicked) {
+      this.selectedContact = this.contact;
+    } else if (!this.wasClicked) {
+      this.selectedContact = null;
+    }
+    this.contactServObj.contactSelected.emit(this.contact);
+    this.contactServObj.selectedContactVisible.emit(this.wasClicked);
   }
 
 }

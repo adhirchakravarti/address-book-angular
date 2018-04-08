@@ -1,9 +1,12 @@
 import { EventEmitter } from '@angular/core';
+import { Contact } from './contact.model';
 
 export class ContactDataService {
-  private contactList = [];
+  private contactList: Contact[] = [];
   public searchQuery: string;
   queryString = new EventEmitter<string>();
+  contactSelected = new EventEmitter<object>();
+  selectedContactVisible = new EventEmitter<boolean>();
 
   getSearchQuery() {
     if (this.searchQuery === '') {
@@ -17,7 +20,7 @@ export class ContactDataService {
     if (queryObj === '') {
       return this.contactList;
     } else {
-      const foundContacts = [];
+      const foundContacts: Contact[] = [];
     const results = [];
     this.contactList.forEach((el, index) => {
       const myRe = new RegExp(queryObj, 'gi');
@@ -76,20 +79,20 @@ export class ContactDataService {
   //   }
   // }
 
-  addContactHandler(name, phone, email) {
+  addContactHandler(sentContact: Contact) {
     // if (newContact.name !== '' && newContact.phone !== '' && newContact.email !== '') {
     //   this.contactList.push(newContact);
     // }
     let field = '';
     const findExistingContact = this.contactList.findIndex((el, i) => {
       // return (name === el.name) || (phone === el.phone) || (email === el.email);
-      if (name === el.name) {
+      if (sentContact.name === el.name) {
         field = 'name';
         return true;
-      } else if (phone === el.phone) {
+      } else if (sentContact.phone === el.phone) {
         field = 'phone';
         return true;
-      } else if (email === el.email) {
+      } else if (sentContact.email === el.email) {
         field = 'email';
         return true;
       }
@@ -97,7 +100,7 @@ export class ContactDataService {
     });
     console.log(findExistingContact);
     if (findExistingContact === -1) {
-      const newContact = {name: name, phone: phone, email: email};
+      const newContact: Contact = sentContact;
       this.contactList.push(newContact);
     } else {
       alert(`Contact with field ${field} already exists!`);

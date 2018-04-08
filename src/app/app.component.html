@@ -10,29 +10,36 @@
           </app-search-contact-component>
       </div>
   </div>
+  <div class="row">
+      <div class="col">
+          <app-add-contact-component>
 
-
-    <div class="row">
-        <div class="col">
-            <app-add-contact-component>
-
-            </app-add-contact-component>
-        </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <app-sort></app-sort>
+          </app-add-contact-component>
       </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <app-sort></app-sort>
     </div>
-
-    <div class="row">
-        <div class="col">
-            <app-contact-list-component>
-
-            </app-contact-list-component>
-        </div>
-    </div>
+  </div>
+  <div class="row">
+      <div class="col-12">
+          <div class="list-group">
+            <app-contact-list-component></app-contact-list-component>
+          </div>
+      </div>
+      <!-- <div class="col-4">
+        <h3>Contact Detail</h3>
+          <app-contact-detail
+          *ngIf="selectedContact; else infoText"
+          [contact]="selectedContact"></app-contact-detail>
+          <ng-template #infoText>
+            <p>Please select a contact</p>
+          </ng-template>
+      </div> -->
+  </div>
 </div>
+<!-- [ngStyle]="{display: selectedContact ? 'none' : 'block'}" -->
 <!-- <div>
   <app-contact-list-component>
 

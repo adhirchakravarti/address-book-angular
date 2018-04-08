@@ -5,6 +5,7 @@ import { Component, OnInit, Input, Output,
    SimpleChanges} from '@angular/core';
 import { ContactDataService } from '../ContactData.service';
 // import { FilterPipe } from '../../../src/pipes';
+import { Contact } from '../contact.model';
 
 @Component({
   selector: 'app-contact-list-component',
@@ -15,16 +16,10 @@ export class ContactListComponentComponent implements OnInit, OnChanges,
 DoCheck, AfterContentInit, AfterContentChecked,
 AfterViewInit, AfterViewChecked {
 
-    contactList = [];
+    contactList: Contact[] = [];
     searchQuery: string; // alternate subscribed data from contactDataService
     // queryString: string; // from contactDataService
 
-  // contactList is now managed in the ContactData Service.
-  // contactList = [
-  //   {name: 'Adhir', phone: '777164488', email: 'adhir@protonmail.com'},
-  //   {name: 'John', phone: '787345345', email: 'jdoe@gmail.com'},
-  //   {name: 'Jack', phone: '977123123', email: 'jsmith@yahoo.co.uk'}
-  // ];
 
   contactServObj: ContactDataService;
 

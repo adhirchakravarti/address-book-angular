@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactDataService } from '../ContactData.service';
+import { Contact } from '../contact.model';
 
 @Component({
   selector: 'app-search-contact-component',

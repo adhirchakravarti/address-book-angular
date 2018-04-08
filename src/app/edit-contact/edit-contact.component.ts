@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { ContactDataService } from '../ContactData.service';
 import { ModalShowService } from '../modal-show.service';
+import { Contact } from '../contact.model';
 
 @Component({
   selector: 'app-edit-contact',
@@ -9,11 +10,13 @@ import { ModalShowService } from '../modal-show.service';
 })
 export class EditContactComponent implements OnInit {
   @Output() sendModalClose = new EventEmitter<boolean>();
-  @Input() contact;
+  @Input() contact: Contact;
   index: number;
   name = '';
   phone = '';
   email = '';
+  organization = '';
+  notes = '';
 
   contactServObj: ContactDataService;
 
@@ -41,7 +44,8 @@ export class EditContactComponent implements OnInit {
       return;
     }
     // console.log(submittedForm.value);
-    const contactToSave = {name: submittedForm.value.name, phone: submittedForm.value.phone, email: submittedForm.value.email};
+    const contactToSave: Contact = {name: submittedForm.value.name, phone: submittedForm.value.phone,
+      email: submittedForm.value.email, organization: submittedForm.value.organization, notes: submittedForm.value.notes};
     console.log(contactToSave);
     this.index = this.contactServObj.findContactIndex(this.contact);
     this.contactServObj.editContactHandler(contactToSave, this.index);
