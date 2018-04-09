@@ -9,7 +9,7 @@
 .card-header {
   display: flex;
   /* justify-content: center; */
-  background-color: rgba(192, 57, 43,1.0);
+  background-color: rgba(0, 116, 217, 1.0);
   color:white;
 }
 .card-header span {
