@@ -1,85 +1,89 @@
-<div class="AddContact">
-  <div class="card">
-    <div class="card-header">
+<div class="row">
+  <div class="col-12">
+    <div class="AddContact">
+      <div class="card">
+        <div class="card-header">
 
-      <div>
-          <span><i class="fas fa-user-plus"></i> Add Contact</span>
-          <!-- <h5> Add Contact</h5> -->
+          <div>
+              <span><i class="fas fa-user-plus"></i> Add Contact</span>
+              <!-- <h5> Add Contact</h5> -->
+          </div>
+
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="onSubmit(form); form.resetForm()" #form="ngForm">
+
+            <div class="row">
+                <div class="form-group col-xs-3 col-md-3">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
+                      </div>
+                        <input type="text" minlength="2" class="form-control" name="name"
+                        [value]="name" placeholder="Name" ngModel required #nameCtrl="ngModel"/>
+                    </div>
+                </div>
+                <div class="form-group col-xs-3 col-md-3">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                    </div>
+                    <input type="text" class="form-control" name="phone"
+                    [value]="phone" placeholder="Phone" ngModel required #phoneCtrl="ngModel"/>
+                  </div>
+                </div>
+                <div class="form-group col-xs-3 col-md-3">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-at" aria-hidden="true"></i></span>
+                    </div>
+                    <input type="email" class="form-control" name="email"
+                    [value]="email" placeholder="Email" ngModel required #emailCtrl="ngModel"/>
+                  </div>
+                </div>
+
+              </div>
+              <!-- <div class="row">
+                  <div class="col-xs-3 col-md-3">
+                      <span class="help-block" *ngIf="nameCtrl.invalid && nameCtrl.touched">Please enter a name</span>
+                  </div>
+                  <div class="col-xs-3 col-md-3">
+                      <span class="help-block" *ngIf="phoneCtrl.invalid && phoneCtrl.touched">Please enter a phone number</span>
+                  </div>
+                  <div class="col-xs-3 col-md-3">
+                      <span class="help-block" *ngIf="emailCtrl.invalid && emailCtrl.touched">Please enter an email address</span>
+                  </div>
+              </div> -->
+              <div class="row">
+                  <div class="form-group col-xs-3 col-md-3">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fa fa-building" aria-hidden="true"></i></span>
+                      </div>
+                      <input type="text" class="form-control" name="organization"
+                      [value]="organization" placeholder="Organization" ngModel required #orgCtrl="ngModel"/>
+                    </div>
+                  </div>
+                  <div class="form-group col-xs-3 col-md-3">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fa fa-sticky-note" aria-hidden="true"></i></span>
+                      </div>
+                      <input type="text" class="form-control" name="notes"
+                      [value]="notes" placeholder="Notes" ngModel #noteCtrl="ngModel"/>
+                    </div>
+                  </div>
+                  <div class="form-group col-xs-2 col-md-2">
+                      <button class="btn"
+                        type="submit"
+                        [disabled]="form.invalid"
+                        [ngClass]="{'btn-primary': nameCtrl !== '' && phoneCtrl !== '' && emailCtrl !== '' && orgCtrl !== '', 'btn-default': nameCtrl == '' && phoneCtrl == '' && emailCtrl == '' && orgCtrl == ''}"
+                        >Add Contact</button>
+                  </div>
+              </div>
+          </form>
       </div>
-
+      </div>
     </div>
-    <div class="card-body">
-      <form (ngSubmit)="onSubmit(form); form.resetForm()" #form="ngForm">
-
-        <div class="row">
-            <div class="form-group col-xs-3 col-md-3">
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
-                  </div>
-                    <input type="text" minlength="2" class="form-control" name="name"
-                    [value]="name" placeholder="Name" ngModel required #nameCtrl="ngModel"/>
-                </div>
-            </div>
-            <div class="form-group col-xs-3 col-md-3">
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-phone" aria-hidden="true"></i></span>
-                </div>
-                <input type="text" class="form-control" name="phone"
-                [value]="phone" placeholder="Phone" ngModel required #phoneCtrl="ngModel"/>
-              </div>
-            </div>
-            <div class="form-group col-xs-3 col-md-3">
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-at" aria-hidden="true"></i></span>
-                </div>
-                <input type="email" class="form-control" name="email"
-                [value]="email" placeholder="Email" ngModel required #emailCtrl="ngModel"/>
-              </div>
-            </div>
-
-          </div>
-          <!-- <div class="row">
-              <div class="col-xs-3 col-md-3">
-                  <span class="help-block" *ngIf="nameCtrl.invalid && nameCtrl.touched">Please enter a name</span>
-              </div>
-              <div class="col-xs-3 col-md-3">
-                  <span class="help-block" *ngIf="phoneCtrl.invalid && phoneCtrl.touched">Please enter a phone number</span>
-              </div>
-              <div class="col-xs-3 col-md-3">
-                  <span class="help-block" *ngIf="emailCtrl.invalid && emailCtrl.touched">Please enter an email address</span>
-              </div>
-          </div> -->
-          <div class="row">
-              <div class="form-group col-xs-3 col-md-3">
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="fa fa-building" aria-hidden="true"></i></span>
-                  </div>
-                  <input type="text" class="form-control" name="organization"
-                  [value]="organization" placeholder="Organization" ngModel required #orgCtrl="ngModel"/>
-                </div>
-              </div>
-              <div class="form-group col-xs-3 col-md-3">
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="fa fa-sticky-note" aria-hidden="true"></i></span>
-                  </div>
-                  <input type="text" class="form-control" name="notes"
-                  [value]="notes" placeholder="Notes" ngModel #noteCtrl="ngModel"/>
-                </div>
-              </div>
-              <div class="form-group col-xs-2 col-md-2">
-                  <button class="btn"
-                    type="submit"
-                    [disabled]="form.invalid"
-                    [ngClass]="{'btn-primary': nameCtrl !== '' && phoneCtrl !== '' && emailCtrl !== '' && orgCtrl !== '', 'btn-default': nameCtrl == '' && phoneCtrl == '' && emailCtrl == '' && orgCtrl == ''}"
-                    >Add Contact</button>
-              </div>
-          </div>
-      </form>
-  </div>
   </div>
 </div>
