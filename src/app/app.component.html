@@ -3,7 +3,26 @@
   <app-cockpit-component></app-cockpit-component>
 </div>
 <div class="container">
-  <div class="row">
+  <div class="mainContent">
+    <div class="row">
+      <div class="col-12">
+          <ul class="nav nav-tabs justify-content-center">
+              <li class="nav-item" role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                <a id="1" class="nav-link" routerLink="/" (click)="makeActive($event)" [ngClass]="{'active': selectedTab==1}">Add Contact</a>
+              </li>
+              <li class="nav-item" role="presentation" routerLinkActive="active">
+                <a id="2" class="nav-link" routerLink="/contactList" (click)="makeActive($event)" [ngClass]="{'active': selectedTab==2}">Contact List</a>
+              </li>
+          </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+</div>
+  <!-- <div class="row">
       <div class="col-12">
           <app-search-contact-component>
 
@@ -28,22 +47,8 @@
             <app-contact-list-component></app-contact-list-component>
           </div>
       </div>
-      <!-- <div class="col-4">
-        <h3>Contact Detail</h3>
-          <app-contact-detail
-          *ngIf="selectedContact; else infoText"
-          [contact]="selectedContact"></app-contact-detail>
-          <ng-template #infoText>
-            <p>Please select a contact</p>
-          </ng-template>
-      </div> -->
-  </div>
+  </div> -->
 </div>
-<!-- [ngStyle]="{display: selectedContact ? 'none' : 'block'}" -->
-<!-- <div>
-  <app-contact-list-component>
 
-  </app-contact-list-component>
-</div> -->
 
 

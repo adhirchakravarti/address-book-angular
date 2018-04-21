@@ -12,9 +12,7 @@ import { Contact } from '../contact.model';
   templateUrl: './contact-list-component.component.html',
   styleUrls: ['./contact-list-component.component.css']
 })
-export class ContactListComponentComponent implements OnInit, OnChanges,
-DoCheck, AfterContentInit, AfterContentChecked,
-AfterViewInit, AfterViewChecked {
+export class ContactListComponent implements OnInit, OnChanges {
 
     contactList: Contact[] = [];
     searchQuery: string; // alternate subscribed data from contactDataService
@@ -50,27 +48,28 @@ AfterViewInit, AfterViewChecked {
     console.log(event);
   }
 
-  ngDoCheck() {
-    // console.log('ngDoCheck called!');
-    // this.queryString = this.contactServObj.getSearchQuery();
-    // console.log(this.queryString);
-    // console.log(this.searchQuery);
-  }
+  // ngDoCheck() {
+  //   // console.log('ngDoCheck called!');
+  //   // this.queryString = this.contactServObj.getSearchQuery();
+  //   // console.log(this.queryString);
+  //   // console.log(this.searchQuery);
+  // }
 
-  ngAfterContentInit() {
-    // console.log('ngAfterContentInit called!');
-  }
+  // ngAfterContentInit() {
+  //   // console.log('ngAfterContentInit called!');
+  // }
 
-  ngAfterContentChecked() {
-    // console.log('ngAfterContentChecked called!');
-  }
+  // ngAfterContentChecked() {
+  //   // console.log('ngAfterContentChecked called!');
+  // }
 
-  ngAfterViewInit() {
-    // console.log('ngAfterViewInit called!');
-  }
-  ngAfterViewChecked() {
-    // console.log('ngAfterViewChecked called!');
-  }
+  // ngAfterViewInit() {
+  //   // console.log('ngAfterViewInit called!');
+  // }
+  // ngAfterViewChecked() {
+  //   // console.log('ngAfterViewChecked called!');
+  // }
+
   // Deprecated in favor of Services.
   // deleteContactHandler(contact, index) {
   //   console.log(index); // passed from child component (contact) so as to use the index to change the contactList array

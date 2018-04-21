@@ -14,11 +14,10 @@ export class AppComponent implements OnInit {
   title = 'app';
   selectedContact;
   selectedContactVisible;
+  selectedTab: number;
 
   constructor(private contactServObj: ContactDataService) {
-    fontawesome.library.add(faEdit);
-    fontawesome.library.add(faTrashAlt);
-    fontawesome.library.add(faChevronRight, faStickyNote, faUserPlus);
+    fontawesome.library.add(faChevronRight, faStickyNote, faUserPlus, faTrashAlt, faEdit);
     fontawesome.library.add(faChevronLeft, faPhone, faUser, faBuilding, faAddressBook, faAddressCard, faAt);
   }
 
@@ -29,5 +28,9 @@ export class AppComponent implements OnInit {
     this.contactServObj.selectedContactVisible.subscribe((showOrNot: boolean) => {
       this.selectedContactVisible = showOrNot;
     });
+  }
+  makeActive(event) {
+    // console.log(event.target.id);
+    this.selectedTab = event.target.id;
   }
 }

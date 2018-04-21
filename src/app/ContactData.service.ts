@@ -40,8 +40,10 @@ export class ContactDataService {
     console.log(value);
     const field = value === 'default' ? null : value;
     if (this.contactList.length > 1 && field !== null) {
-      this.contactList.sort(this.compareValues(field, 'asc'));
-      console.log(this.contactList);
+      const tempContactList: Contact[] = this.contactList.slice();
+      tempContactList.sort(this.compareValues(field, 'asc'));
+      console.log(tempContactList);
+      this.contactList = tempContactList;
     }
   }
 

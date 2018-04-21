@@ -7,7 +7,7 @@ import { Contact } from '../contact.model';
   templateUrl: './add-contact-component.component.html',
   styleUrls: ['./add-contact-component.component.css']
 })
-export class AddContactComponentComponent {
+export class AddContactComponent {
 
   name = '';
   phone = '';

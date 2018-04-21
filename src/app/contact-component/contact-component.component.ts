@@ -8,7 +8,7 @@ import { Contact } from '../contact.model';
   templateUrl: './contact-component.component.html',
   styleUrls: ['./contact-component.component.css']
 })
-export class ContactComponentComponent {
+export class ContactComponent {
 
   @Input() contact;
   @Input() index;

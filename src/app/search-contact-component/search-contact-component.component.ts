@@ -7,7 +7,7 @@ import { Contact } from '../contact.model';
   templateUrl: './search-contact-component.component.html',
   styleUrls: ['./search-contact-component.component.css']
 })
-export class SearchContactComponentComponent {
+export class SearchContactComponent {
 
   query: string;
   contactServObj: ContactDataService;

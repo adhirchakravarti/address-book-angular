@@ -7,9 +7,10 @@
   align-items: center;
   justify-items: stretch;
   margin:auto;
+  padding:20px;
 }
 
-.sortContainer .form-inline .form-group select {
+.form-inline .form-group select {
   margin-left: 10px;
 }
 
