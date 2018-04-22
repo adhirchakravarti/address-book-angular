@@ -1,8 +1,5 @@
 import { Component, OnInit, Input, Output,
-   OnChanges, DoCheck, AfterContentChecked,
-   AfterContentInit, AfterViewInit,
-   AfterViewChecked,
-   SimpleChanges} from '@angular/core';
+   OnChanges, DoCheck, SimpleChanges } from '@angular/core';
 import { ContactDataService } from '../ContactData.service';
 // import { FilterPipe } from '../../../src/pipes';
 import { Contact } from '../contact.model';
@@ -12,12 +9,12 @@ import { Contact } from '../contact.model';
   templateUrl: './contact-list-component.component.html',
   styleUrls: ['./contact-list-component.component.css']
 })
-export class ContactListComponent implements OnInit, OnChanges {
+export class ContactListComponent implements DoCheck, OnInit {
 
     contactList: Contact[] = [];
     searchQuery: string; // alternate subscribed data from contactDataService
     // queryString: string; // from contactDataService
-
+    oldContactList: Contact[] = [];
 
   contactServObj: ContactDataService;
 
@@ -28,13 +25,15 @@ export class ContactListComponent implements OnInit, OnChanges {
     // this.searchableList = ['name', 'phone', 'email'];
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    // this.queryString = this.contactServObj.searchQuery;
-    console.log('ngOnChanges called!');
-    for (const key of Object.keys(changes)) {
-        console.log(`${key} changed.Current: ${changes[key].currentValue}.Previous: ${changes[key].previousValue}`);
-      }
-  }
+  // Only used to detect changes to input properties
+  // ngOnChanges(changes: SimpleChanges) {
+  //   // this.queryString = this.contactServObj.searchQuery;
+  //   console.log('ngOnChanges called!');
+  //   console.log(changes);
+  //   for (const key of Object.keys(changes)) {
+  //       console.log(`${key} changed.Current: ${changes[key].currentValue}.Previous: ${changes[key].previousValue}`);
+  //     }
+  // }
 
   ngOnInit() {
     this.contactList = this.contactServObj.getContacts();
@@ -42,18 +41,32 @@ export class ContactListComponent implements OnInit, OnChanges {
     this.contactServObj.queryString.subscribe((query: string) => {
       this.searchQuery = query;
     });
+    this.oldContactList = this.contactList;
+    // this.contactList = this.contactServObj.contactListChanged.subscribe(
+    //   (contacts: Contact[]) => {
+    //     this.contactList = contacts;
+    //   }
+    // );
   }
 
   passedOnSearchTerm(event) {
     console.log(event);
   }
 
-  // ngDoCheck() {
-  //   // console.log('ngDoCheck called!');
-  //   // this.queryString = this.contactServObj.getSearchQuery();
-  //   // console.log(this.queryString);
-  //   // console.log(this.searchQuery);
-  // }
+  ngDoCheck() {
+    console.log('ngDoCheck called!');
+    // console.log('old', this.oldContactList);
+    // console.log('new', this.contactList);
+    this.contactList = this.contactServObj.getContacts();
+    // find a different way to check existing contact list with new contact list
+    // for (let i = 0; i < this.contactList.length; i++) {
+    //   if (this.contactList[i].name !== this.oldContactList[i].name ||
+    //       this.contactList[i].phone !== this.oldContactList[i].phone ||
+    //       this.contactList[i].email !== this.oldContactList[i].email ) {
+    //         this.contactList = this.contactServObj.getContacts();
+    //   }
+    // }
+  }
 
   // ngAfterContentInit() {
   //   // console.log('ngAfterContentInit called!');

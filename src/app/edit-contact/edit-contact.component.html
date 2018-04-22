@@ -1,6 +1,6 @@
 <div class="outer">
   <form (ngSubmit)="onSubmit(editForm); editForm.resetForm()" #editForm="ngForm">
-      <p><strong>Edit Contact: {{contact.name}}</strong></p>
+      <p><strong>Edit Contact: {{oldContact.name}}</strong></p>
       <div class="form-group">
           <input class="form-control" type="text" name="name" placeholder="Name" [(ngModel)]="name" #nameCtrl="ngModel" required/>
       </div>

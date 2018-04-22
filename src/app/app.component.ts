@@ -28,6 +28,7 @@ export class AppComponent implements OnInit {
     this.contactServObj.selectedContactVisible.subscribe((showOrNot: boolean) => {
       this.selectedContactVisible = showOrNot;
     });
+    this.selectedTab = 1;
   }
   makeActive(event) {
     // console.log(event.target.id);

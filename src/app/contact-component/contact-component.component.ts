@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { ContactDataService } from '../ContactData.service';
 import { ModalShowService } from '../modal-show.service';
 import { Contact } from '../contact.model';
@@ -8,17 +8,23 @@ import { Contact } from '../contact.model';
   templateUrl: './contact-component.component.html',
   styleUrls: ['./contact-component.component.css']
 })
-export class ContactComponent {
+export class ContactComponent implements OnChanges {
 
   @Input() contact;
   @Input() index;
   wasClicked = false;
   selectedContact;
-  // @Output() contactToRemove = new EventEmitter<{name: string, phone: string, email: string}>(); Deprecated, using Services
-  modalServObj: ModalShowService;
+
+  modalServObj: ModalShowService; // not yet implemented - service for the modal
   modalShow = false;
   contactServObj: ContactDataService;
   // modalShow = this.modalServObj.getModalStatus();
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
+    this.contact = changes.contact.currentValue;
+    this.index = changes.index.currentValue;
+  }
 
   constructor(contactServObj: ContactDataService) {
     this.contactServObj = contactServObj;
@@ -42,9 +48,9 @@ export class ContactComponent {
   }
 
   onSelected() {
-    console.log(`contact ${this.contact.name} clicked!`);
+    // console.log(`contact ${this.contact.name} clicked!`);
     this.wasClicked = this.wasClicked ? false : true;
-    console.log(this.wasClicked);
+    // console.log(this.wasClicked);
     if (this.wasClicked) {
       this.selectedContact = this.contact;
     } else if (!this.wasClicked) {

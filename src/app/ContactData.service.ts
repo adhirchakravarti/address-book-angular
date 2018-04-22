@@ -3,36 +3,22 @@ import { Contact } from './contact.model';
 
 export class ContactDataService {
   private contactList: Contact[] = [];
-  public searchQuery: string;
+  public searchQuery: string; // deprecated
   queryString = new EventEmitter<string>();
   contactSelected = new EventEmitter<object>();
   selectedContactVisible = new EventEmitter<boolean>();
 
-  getSearchQuery() {
-    if (this.searchQuery === '') {
-      return;
-    } else {
-      return this.searchQuery;
-    }
-  }
+  // Deprecated
+  // getSearchQuery() {
+  //   if (this.searchQuery === '') {
+  //     return;
+  //   } else {
+  //     return this.searchQuery;
+  //   }
+  // }
 
-  getContacts(queryObj = '') {
-    if (queryObj === '') {
-      return this.contactList;
-    } else {
-      const foundContacts: Contact[] = [];
-    const results = [];
-    this.contactList.forEach((el, index) => {
-      const myRe = new RegExp(queryObj, 'gi');
-      if ((el.name.search(myRe) !== -1) || (el.phone.search(myRe) !== -1) || (el.email.search(myRe) !== -1)) {
-        results.push(el.name.match(myRe));
-        foundContacts.push(el);
-      }
-    });
-    console.log(results);
-    console.log('FoundContacts: ', foundContacts);
-    return foundContacts;
-    }
+  getContacts = () => {
+    return this.contactList;
   }
 
   sortContactHandler = (value) => {
@@ -81,7 +67,7 @@ export class ContactDataService {
   //   }
   // }
 
-  addContactHandler(sentContact: Contact) {
+  addContactHandler = (sentContact: Contact) => {
     // if (newContact.name !== '' && newContact.phone !== '' && newContact.email !== '') {
     //   this.contactList.push(newContact);
     // }
@@ -109,16 +95,18 @@ export class ContactDataService {
     }
   }
 
-  deleteContactHandler(contact, index) {
+  deleteContactHandler = (contact, index) => {
     console.log(index); // passed from child component (contact) so as to use the index to change the contactList array
     this.contactList.splice(index, 1);
   }
 
-  editContactHandler(contact, index) {
+  editContactHandler = (contact, index) => {
+    console.log(contact);
     this.contactList.splice(index, 1, contact);
+    console.log(this.contactList);
   }
 
-  findContactIndex(contact) {
+  findContactIndex = (contact) => {
     const findContact = this.contactList.findIndex((el, i) => {
       return contact.name === el.name;
     });
