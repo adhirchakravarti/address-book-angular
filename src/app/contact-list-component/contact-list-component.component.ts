@@ -9,7 +9,7 @@ import { Contact } from '../contact.model';
   templateUrl: './contact-list-component.component.html',
   styleUrls: ['./contact-list-component.component.css']
 })
-export class ContactListComponent implements DoCheck, OnInit {
+export class ContactListComponent implements OnInit {
 
     contactList: Contact[] = [];
     searchQuery: string; // alternate subscribed data from contactDataService
@@ -21,8 +21,6 @@ export class ContactListComponent implements DoCheck, OnInit {
 
   constructor(contactServObj: ContactDataService) {
     this.contactServObj = contactServObj;
-
-    // this.searchableList = ['name', 'phone', 'email'];
   }
 
   // Only used to detect changes to input properties
@@ -53,20 +51,24 @@ export class ContactListComponent implements DoCheck, OnInit {
     console.log(event);
   }
 
-  ngDoCheck() {
-    console.log('ngDoCheck called!');
-    // console.log('old', this.oldContactList);
-    // console.log('new', this.contactList);
+  fetchUpdatedList() {
     this.contactList = this.contactServObj.getContacts();
-    // find a different way to check existing contact list with new contact list
-    // for (let i = 0; i < this.contactList.length; i++) {
-    //   if (this.contactList[i].name !== this.oldContactList[i].name ||
-    //       this.contactList[i].phone !== this.oldContactList[i].phone ||
-    //       this.contactList[i].email !== this.oldContactList[i].email ) {
-    //         this.contactList = this.contactServObj.getContacts();
-    //   }
-    // }
   }
+
+  // ngDoCheck() {
+  //   console.log('ngDoCheck called!');
+  //   // console.log('old', this.oldContactList);
+  //   // console.log('new', this.contactList);
+  //   // this.contactList = this.contactServObj.getContacts();
+  //   // find a different way to check existing contact list with new contact list
+  //   // for (let i = 0; i < this.contactList.length; i++) {
+  //   //   if (this.contactList[i].name !== this.oldContactList[i].name ||
+  //   //       this.contactList[i].phone !== this.oldContactList[i].phone ||
+  //   //       this.contactList[i].email !== this.oldContactList[i].email ) {
+  //   //         this.contactList = this.contactServObj.getContacts();
+  //   //   }
+  //   // }
+  // }
 
   // ngAfterContentInit() {
   //   // console.log('ngAfterContentInit called!');
@@ -81,16 +83,6 @@ export class ContactListComponent implements DoCheck, OnInit {
   // }
   // ngAfterViewChecked() {
   //   // console.log('ngAfterViewChecked called!');
-  // }
-
-  // Deprecated in favor of Services.
-  // deleteContactHandler(contact, index) {
-  //   console.log(index); // passed from child component (contact) so as to use the index to change the contactList array
-  //   const findContact = this.contactList.findIndex((el, i) => {
-  //     return contact.name === el.name;
-  //   });
-  //   console.log(findContact);
-  //   this.contactList.splice(findContact, 1);
   // }
 
 }

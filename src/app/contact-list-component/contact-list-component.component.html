@@ -3,7 +3,7 @@
       <div class="formContainer">
         <div class="row align-items-center">
           <app-search-contact-component></app-search-contact-component>
-          <app-sort></app-sort>
+          <app-sort (contactListUpdate)="fetchUpdatedList()"></app-sort>
         </div>
       </div>
   </div>

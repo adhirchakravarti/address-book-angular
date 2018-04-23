@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ContactDataService } from '../ContactData.service';
 
 @Component({
@@ -7,6 +7,8 @@ import { ContactDataService } from '../ContactData.service';
   styleUrls: ['./sort.component.css']
 })
 export class SortComponent implements OnInit {
+
+  @Output() contactListUpdate: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private contactServObj: ContactDataService) { }
 
@@ -17,5 +19,6 @@ export class SortComponent implements OnInit {
     console.log(event.target.value);
     // const field = event.target.value === 'default' ? null : event.target.value;
     this.contactServObj.sortContactHandler(event.target.value);
+    this.contactListUpdate.emit();
   }
 }

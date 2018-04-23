@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange
 import { ContactDataService } from '../ContactData.service';
 import { ModalShowService } from '../modal-show.service';
 import { Contact } from '../contact.model';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-contact-component',
@@ -22,11 +23,11 @@ export class ContactComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     console.log(changes);
-    this.contact = changes.contact.currentValue;
+    // this.contact = changes.contact.currentValue;
     this.index = changes.index.currentValue;
   }
 
-  constructor(contactServObj: ContactDataService) {
+  constructor(contactServObj: ContactDataService, private router: Router, private route: ActivatedRoute) {
     this.contactServObj = contactServObj;
   }
 

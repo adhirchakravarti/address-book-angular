@@ -2,13 +2,14 @@ import { Component, OnInit, EventEmitter, Input, Output, OnChanges, SimpleChange
 import { ContactDataService } from '../ContactData.service';
 import { ModalShowService } from '../modal-show.service';
 import { Contact } from '../contact.model';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edit-contact',
   templateUrl: './edit-contact.component.html',
   styleUrls: ['./edit-contact.component.css']
 })
-export class EditContactComponent implements OnInit, DoCheck {
+export class EditContactComponent implements OnInit {
   @Output() sendModalClose = new EventEmitter<boolean>();
   @Input() contact: Contact;
   index: number;
@@ -25,7 +26,7 @@ export class EditContactComponent implements OnInit, DoCheck {
   //   console.log(changes);
   // }
 
-  constructor(contactServObj: ContactDataService) {
+  constructor(contactServObj: ContactDataService, private router: Router, private route: ActivatedRoute) {
     this.contactServObj = contactServObj;
   }
   ngOnInit() {
@@ -33,14 +34,17 @@ export class EditContactComponent implements OnInit, DoCheck {
     this.oldContact = Object.assign({}, this.contact);
   }
 
-  ngDoCheck() {
-    if (this.oldContact.name !== this.contact.name ||
-      this.oldContact.phone !== this.contact.phone ||
-      this.oldContact.email !== this.contact.email ||
-      this.oldContact.organization !== this.contact.organization) {
-        this.oldContact = Object.assign({}, this.contact);
-      }
-  }
+  // ngDoCheck() {
+  //   console.log('EditComponent - DoCheck called!');
+  //   console.log(this.oldContact, this.contact);
+  //   if (this.oldContact.name !== this.contact.name ||
+  //     this.oldContact.phone !== this.contact.phone ||
+  //     this.oldContact.email !== this.contact.email ||
+  //     this.oldContact.organization !== this.contact.organization) {
+  //       console.log(this.oldContact, this.contact);
+  //       this.oldContact = Object.assign({}, this.contact);
+  //     }
+  // }
 
   onCancel(event) {
     this.sendModalClose.emit(false);
@@ -56,14 +60,19 @@ export class EditContactComponent implements OnInit, DoCheck {
 
   onSubmit(submittedForm) {
     if (submittedForm.invalid) {
+      console.log(submittedForm.invalid);
       return;
     }
-    // console.log(submittedForm.value);
+    console.log(submittedForm);
     const contactToSave: Contact = {name: submittedForm.value.name, phone: submittedForm.value.phone,
       email: submittedForm.value.email, organization: submittedForm.value.organization, notes: submittedForm.value.notes};
     console.log(contactToSave);
     this.index = this.contactServObj.findContactIndex(this.contact);
     console.log(this.index);
-    this.contactServObj.editContactHandler(contactToSave, this.index);
+    if (this.index !== -1) {
+      this.contactServObj.editContactHandler(contactToSave, this.index);
+    } else {
+      alert(`contact ${this.contact.name} doesn't exist! Cannot edit...`);
+    }
   }
 }

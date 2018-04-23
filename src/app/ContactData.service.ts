@@ -108,7 +108,7 @@ export class ContactDataService {
 
   findContactIndex = (contact) => {
     const findContact = this.contactList.findIndex((el, i) => {
-      return contact.name === el.name;
+      return contact.name === el.name || contact.phone === el.phone || contact.email === el.email;
     });
     console.log(findContact);
     return findContact;
