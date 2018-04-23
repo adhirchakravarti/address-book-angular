@@ -1,5 +1,7 @@
 Basic Address Book Front-end in Angular (v5) to create, edit, sort and filter contacts.....will be improved with more features and a nodeJS/Express/MongoDB backend soon.
 
+Hosted on Github pages: https://adhirchakravarti.github.io/address-book-angular/
+
 # AddressBookAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
