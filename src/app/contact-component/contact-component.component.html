@@ -27,21 +27,21 @@
         <div class="float-right">
             <button class="btn btn-light" (click)="deleteContact($event)"><i class="fas fa-trash-alt"></i></button>
             <button class="btn btn-light" (click)="showModalHandler($event)"><i class="fas fa-edit"></i></button>
-            <button class="btn btn-light" (click)="onSelected()" *ngIf="wasClicked===false"><i class="fas fa-chevron-right"></i></button>
+            <button class="btn btn-light" [routerLink]="['/contactList', index]" (click)="onSelected()" *ngIf="wasClicked===false"><i class="fas fa-chevron-right"></i></button>
             <button class="btn btn-light" (click)="onSelected()" *ngIf="wasClicked===true"><i class="fas fa-chevron-left"></i></button>
         </div>
       </div>
     </div>
-    <div class="col-4 float-right">
+    <!-- <div class="col-4 float-right">
         <app-contact-detail
           *ngIf="selectedContact"
           [contact]="selectedContact"></app-contact-detail>
-    </div>
+    </div> -->
   </div>
 </div>
 
-<div>
+<!-- <div>
     <app-modal [modalShow]="modalShow" [importedContact]="contact"
       (sendModalClose)="closeModalHandler($event)">
     </app-modal>
-</div>
+</div> -->

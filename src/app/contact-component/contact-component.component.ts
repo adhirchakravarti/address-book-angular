@@ -39,7 +39,8 @@ export class ContactComponent implements OnChanges {
 
   showModalHandler(event) {
     // this.backDropShow = true;
-    this.modalShow = true;
+    // this.modalShow = true;
+    this.router.navigate(['/contactList', this.index, 'edit']);
     // this.modalToShow.showModalHandler();
   }
 

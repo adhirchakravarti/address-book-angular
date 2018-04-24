@@ -3,6 +3,7 @@ import { ContactDataService } from '../ContactData.service';
 import { ModalShowService } from '../modal-show.service';
 import { Contact } from '../contact.model';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-contact',
@@ -19,6 +20,7 @@ export class EditContactComponent implements OnInit {
   organization = '';
   notes = '';
   oldContact: Contact;
+  editForm: FormGroup;
 
   contactServObj: ContactDataService;
 
@@ -32,6 +34,10 @@ export class EditContactComponent implements OnInit {
   ngOnInit() {
     // this.contactList = this.contactServObj.getContacts();
     this.oldContact = Object.assign({}, this.contact);
+    console.log(this.route.snapshot.params);
+    this.index = +this.route.snapshot.params['index'];
+    console.log(this.index);
+    this.contact = this.contactServObj.getContact(this.index);
   }
 
   // ngDoCheck() {
@@ -48,6 +54,7 @@ export class EditContactComponent implements OnInit {
 
   onCancel(event) {
     this.sendModalClose.emit(false);
+    this.router.navigate(['/contactList']);
   }
 
   // onSave(event) {
@@ -74,5 +81,6 @@ export class EditContactComponent implements OnInit {
     } else {
       alert(`contact ${this.contact.name} doesn't exist! Cannot edit...`);
     }
+    this.router.navigate(['/contactList']);
   }
 }

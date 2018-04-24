@@ -1,9 +1,20 @@
-<div class="row">
-  <div class="col-xs-12">
-    <h4>{{ contact.name }}</h4>
-    <h6>Phone: {{ contact.phone}}</h6>
-    <h6>Email: {{ contact.email }}</h6>
-    <h6>Organization: {{ contact.organization }}</h6>
-    <h6>Notes: {{ contact.notes }}</h6>
+<!-- <div class="row"> -->
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <div class="fieldContainer">
+          <h4>{{ contact.name }}</h4>
+          <h6>Phone: {{ contact.phone}}</h6>
+          <h6>Email: {{ contact.email }}</h6>
+          <h6>Organization: {{ contact.organization }}</h6>
+          <h6>Notes: {{ contact.notes }}</h6>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-6">
+          <button class="btn btn-light" [routerLink]="['/contactList']" (click)="onSelected($event)"><i class="fas fa-chevron-left"></i></button>
+      </div>
+    </div>
   </div>
-</div>
+<!-- </div> -->

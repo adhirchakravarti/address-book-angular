@@ -21,6 +21,14 @@ export class ContactDataService {
     return this.contactList;
   }
 
+  getContact = (index) => {
+    console.log(index);
+    const foundContact = this.contactList.find((el, i) => {
+      return i === index;
+    });
+    return foundContact;
+  }
+
   sortContactHandler = (value) => {
     // contacts.sort(compareValues('phone', 'asc'))
     console.log(value);

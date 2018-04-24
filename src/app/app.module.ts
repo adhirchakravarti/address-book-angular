@@ -21,8 +21,8 @@ import { ContactDetailComponent } from './contact-detail/contact-detail.componen
 const appRoutes: Routes = [
   { path: '' , component: AddContactComponent },
   { path: 'contactList', component: ContactListComponent },
-  { path: 'contactList/:name', component: ContactDetailComponent },
-  { path: 'contactList/edit', component: ModalComponent }
+  { path: 'contactList/:index', component: ContactDetailComponent },
+  { path: 'contactList/:index/edit', component: EditContactComponent }
 ];
 
 @NgModule({

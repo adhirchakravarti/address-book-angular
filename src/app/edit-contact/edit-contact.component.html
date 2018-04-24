@@ -1,25 +1,85 @@
-<div class="outer">
-  <form (ngSubmit)="onSubmit(editForm)" #editForm="ngForm">
-      <p><strong>Edit Contact: {{oldContact.name}}</strong></p>
-      <div class="form-group">
-          <input class="form-control" type="text" name="name" placeholder="Name" [(ngModel)]="name" #nameCtrl="ngModel" required/>
+<div class="row justify-content-center">
+  <div class="col-6">
+    <div class="card">
+      <div class="card-header">
+        <div>
+            <span><i class="fas fa-edit"></i> Edit Contact</span>
+            <!-- <h5> Add Contact</h5> -->
+        </div>
       </div>
-      <div class="form-group">
-          <input class="form-control" type="text" name="phone" placeholder="Phone" [(ngModel)]="phone" #phoneCtrl="ngModel" required/>
-      </div>
-      <div class="form-group">
-          <input class="form-control" type="text" name="email" placeholder="Email" [(ngModel)]="email" #emailCtrl="ngModel" required/>
-      </div>
-      <div class="form-group">
-          <input class="form-control" type="text" name="organization" placeholder="Organization" [(ngModel)]="organization" #orgCtrl="ngModel" required/>
-      </div>
-      <div class="form-group">
-          <input class="form-control" type="text" name="notes" placeholder="Notes / Comments" [(ngModel)]="notes" #noteCtrl="ngModel"/>
-      </div>
-      <div class="form-group">
-          <button class="btn btn-primary" type="submit" [disabled]="editForm.invalid">Save</button>
-          <button class="btn btn-default" (click)="onCancel($event)">Cancel</button>
-      </div>
-  </form>
-  <!-- (ngSubmit)="onSubmit(editForm); editForm.resetForm()" -->
+        <div class="card-body">
+          <form (ngSubmit)="onSubmit(editForm)" #editForm="ngForm">
+              <p><strong>Contact: {{contact.name}}</strong></p>
+              <div class="form-group">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
+                    </div>
+                      <input type="text" minlength="2" class="form-control" name="name"
+                      [value]="name" placeholder="Name" ngModel required #nameCtrl="ngModel"/>
+                  </div>
+              </div>
+              <!-- <div class="form-group">
+                  <input class="form-control" type="text" name="name" placeholder="Name" [(ngModel)]="name" #nameCtrl="ngModel" required/>
+              </div> -->
+              <div class="form-group">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                    </div>
+                    <input type="text" class="form-control" name="phone"
+                    [value]="phone" placeholder="Phone" ngModel required #phoneCtrl="ngModel"/>
+                  </div>
+              </div>
+              <!-- <div class="form-group">
+                  <input class="form-control" type="text" name="phone" placeholder="Phone" [(ngModel)]="phone" #phoneCtrl="ngModel" required/>
+              </div> -->
+              <div class="form-group">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-at" aria-hidden="true"></i></span>
+                    </div>
+                    <input type="email" class="form-control" name="email"
+                    [value]="email" placeholder="Email" ngModel required #emailCtrl="ngModel"/>
+                  </div>
+              </div>
+              <!-- <div class="form-group">
+                  <input class="form-control" type="text" name="email" placeholder="Email" [(ngModel)]="email" #emailCtrl="ngModel" required/>
+              </div> -->
+              <div class="form-group">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-building" aria-hidden="true"></i></span>
+                    </div>
+                    <input type="text" class="form-control" name="organization"
+                    [value]="organization" placeholder="Organization" ngModel required #orgCtrl="ngModel"/>
+                  </div>
+              </div>
+              <!-- <div class="form-group">
+                  <input class="form-control" type="text" name="organization" placeholder="Organization" [(ngModel)]="organization" #orgCtrl="ngModel" required/>
+              </div> -->
+              <div class="form-group">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-sticky-note" aria-hidden="true"></i></span>
+                    </div>
+                    <input type="text" class="form-control" name="notes"
+                    [value]="notes" placeholder="Notes" ngModel #noteCtrl="ngModel"/>
+                  </div>
+              </div>
+              <!-- <div class="form-group">
+                  <input class="form-control" type="text" name="notes" placeholder="Notes / Comments" [(ngModel)]="notes" #noteCtrl="ngModel"/>
+              </div> -->
+              <div class="row justify-content-center">
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit" [disabled]="editForm.invalid">Save</button>
+                    <button class="btn btn-default" (click)="onCancel($event)">Cancel</button>
+                </div>
+              </div>
+          </form>
+          <!-- (ngSubmit)="onSubmit(editForm); editForm.resetForm()" -->
+        </div>
+
+    </div>
+  </div>
 </div>
