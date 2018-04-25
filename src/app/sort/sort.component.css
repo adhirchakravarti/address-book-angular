@@ -10,9 +10,9 @@
   padding:20px;
 }
 
-.form-inline .form-group select {
+/* .form-inline .form-group select {
   margin-left: 10px;
-}
+} */
 
 .row {
   display: flex;

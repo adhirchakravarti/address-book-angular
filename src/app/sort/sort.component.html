@@ -1,10 +1,10 @@
 
 <!-- <div class="sortContainer"> -->
-    <form class="form-inline">
+    <form class="form-inline" [formGroup]="sortForm">
       <div class="form-group">
-          <label>Sort By:</label>
-          <select (change)="onSelectChange($event)" class="form-control" name="sort">
-              <option value="default">Choose</option>
+          <!-- <label>Sort By:</label> -->
+          <select (change)="onSelectChange($event)" class="form-control" name="sort" formControlName="sort">
+              <option name="default" value="default">Sort By</option>
               <option name="name" value="name">Name</option>
               <option name="phone" value="phone">Phone</option>
               <option name="email" value="email">Email</option>

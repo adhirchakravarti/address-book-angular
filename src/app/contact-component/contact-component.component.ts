@@ -9,7 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './contact-component.component.html',
   styleUrls: ['./contact-component.component.css']
 })
-export class ContactComponent implements OnChanges {
+export class ContactComponent implements OnInit {
 
   @Input() contact;
   @Input() index;
@@ -21,15 +21,17 @@ export class ContactComponent implements OnChanges {
   contactServObj: ContactDataService;
   // modalShow = this.modalServObj.getModalStatus();
 
-  ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
-    // this.contact = changes.contact.currentValue;
-    this.index = changes.index.currentValue;
-  }
+  // ngOnChanges(changes: SimpleChanges) {
+  //   console.log(changes);
+  //   // this.contact = changes.contact.currentValue;
+  //   this.index = changes.index.currentValue;
+  // }
 
   constructor(contactServObj: ContactDataService, private router: Router, private route: ActivatedRoute) {
     this.contactServObj = contactServObj;
   }
+
+  ngOnInit() {  }
 
   deleteContact(event) {
     // console.log(this.index);
