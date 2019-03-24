@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Input, Output, OnChanges, SimpleChanges, DoCheck } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { ContactDataService } from '../ContactData.service';
 import { ModalShowService } from '../modal-show.service';
 import { Contact } from '../contact.model';
@@ -24,9 +24,6 @@ export class EditContactComponent implements OnInit {
 
   contactServObj: ContactDataService;
 
-  // ngOnChanges(changes: SimpleChanges) {
-  //   console.log(changes);
-  // }
 
   constructor(contactServObj: ContactDataService, private router: Router, private route: ActivatedRoute) {
     this.contactServObj = contactServObj;
@@ -40,30 +37,10 @@ export class EditContactComponent implements OnInit {
     this.contact = this.contactServObj.getContact(this.index);
   }
 
-  // ngDoCheck() {
-  //   console.log('EditComponent - DoCheck called!');
-  //   console.log(this.oldContact, this.contact);
-  //   if (this.oldContact.name !== this.contact.name ||
-  //     this.oldContact.phone !== this.contact.phone ||
-  //     this.oldContact.email !== this.contact.email ||
-  //     this.oldContact.organization !== this.contact.organization) {
-  //       console.log(this.oldContact, this.contact);
-  //       this.oldContact = Object.assign({}, this.contact);
-  //     }
-  // }
-
   onCancel(event) {
     this.sendModalClose.emit(false);
     this.router.navigate(['/contactList']);
   }
-
-  // onSave(event) {
-  //   this.index = this.contactServObj.findContactIndex(this.contact);
-  //   // this.contactServObj.editContactHandler(index);
-  //   const contactToSave = {name: this.name, phone: this.phone, email: this.email};
-  //   console.log(contactToSave);
-  //   this.contactServObj.editContactHandler(contactToSave, this.index);
-  // }
 
   onSubmit(submittedForm) {
     if (submittedForm.invalid) {

@@ -3,19 +3,7 @@ import { Contact } from './contact.model';
 
 export class ContactDataService {
   private contactList: Contact[] = [];
-  public searchQuery: string; // deprecated
   queryString = new EventEmitter<string>();
-  contactSelected = new EventEmitter<object>();
-  selectedContactVisible = new EventEmitter<boolean>();
-
-  // Deprecated
-  // getSearchQuery() {
-  //   if (this.searchQuery === '') {
-  //     return;
-  //   } else {
-  //     return this.searchQuery;
-  //   }
-  // }
 
   getContacts = () => {
     return this.contactList;
@@ -64,21 +52,8 @@ export class ContactDataService {
     };
   }
 
-  // findExistingContact(el, i){
-  //   let field = '';
-  //   if (name === el.name) {
-  //     field = 'name';
-  //   } else if (phone === el.phone) {
-  //     field = 'phone';
-  //   } else if (email === el.email) {
-  //     field = 'email';
-  //   }
-  // }
 
   addContactHandler = (sentContact: Contact) => {
-    // if (newContact.name !== '' && newContact.phone !== '' && newContact.email !== '') {
-    //   this.contactList.push(newContact);
-    // }
     let field = '';
     const findExistingContact = this.contactList.findIndex((el, i) => {
       // return (name === el.name) || (phone === el.phone) || (email === el.email);

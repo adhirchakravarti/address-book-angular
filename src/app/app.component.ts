@@ -13,22 +13,14 @@ import {faTrashAlt, faEdit, faChevronRight, faChevronLeft, faUser, faUserPlus,
 })
 export class AppComponent implements OnInit {
   title = 'app';
-  selectedContact;
-  selectedContactVisible;
   selectedTab: number;
 
   constructor(private contactServObj: ContactDataService, private route: ActivatedRoute, private router: Router) {
-    fontawesome.library.add(faChevronRight, faStickyNote, faUserPlus, faTrashAlt, faEdit);
-    fontawesome.library.add(faChevronLeft, faPhone, faUser, faBuilding, faAddressBook, faAddressCard, faAt);
+    fontawesome.library.add(faChevronRight, faStickyNote, faUserPlus, faTrashAlt, faEdit, 
+                      faChevronLeft, faPhone, faUser, faBuilding, faAddressBook, faAddressCard, faAt);
   }
 
   ngOnInit() {
-    this.contactServObj.contactSelected.subscribe((contact: object) => {
-      this.selectedContact = contact;
-    });
-    this.contactServObj.selectedContactVisible.subscribe((showOrNot: boolean) => {
-      this.selectedContactVisible = showOrNot;
-    });
     this.selectedTab = 1;
     this.router.navigate(['/']);
   }

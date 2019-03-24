@@ -21,12 +21,6 @@ export class ContactComponent implements OnInit {
   contactServObj: ContactDataService;
   // modalShow = this.modalServObj.getModalStatus();
 
-  // ngOnChanges(changes: SimpleChanges) {
-  //   console.log(changes);
-  //   // this.contact = changes.contact.currentValue;
-  //   this.index = changes.index.currentValue;
-  // }
-
   constructor(contactServObj: ContactDataService, private router: Router, private route: ActivatedRoute) {
     this.contactServObj = contactServObj;
   }
@@ -35,19 +29,14 @@ export class ContactComponent implements OnInit {
 
   deleteContact(event) {
     // console.log(this.index);
-    // this.contactToRemove.emit(this.contact);
     this.contactServObj.deleteContactHandler(this.contact, this.index);
   }
 
   showModalHandler(event) {
-    // this.backDropShow = true;
-    // this.modalShow = true;
     this.router.navigate(['/contactList', this.index, 'edit']);
-    // this.modalToShow.showModalHandler();
   }
 
   closeModalHandler(negativeFeedback) {
-    // this.backDropShow = false;
     this.modalShow = negativeFeedback;
   }
 
@@ -60,8 +49,6 @@ export class ContactComponent implements OnInit {
     } else if (!this.wasClicked) {
       this.selectedContact = null;
     }
-    this.contactServObj.contactSelected.emit(this.contact);
-    this.contactServObj.selectedContactVisible.emit(this.wasClicked);
   }
 
 }

@@ -22,7 +22,6 @@ export class SortComponent implements OnInit {
 
   onSelectChange(event) {
     console.log(event.target.value);
-    // const field = event.target.value === 'default' ? null : event.target.value;
     this.contactServObj.sortContactHandler(event.target.value);
     console.log(this.sortForm);
     this.sortForm.reset();
